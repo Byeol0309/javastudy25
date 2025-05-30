@@ -6,10 +6,13 @@ import ch05.mbcbank.dto.AccountDTO;
 import ch05.mbcbank.service.HanaBankService;
 
 public class BankExam {
-			//2025.05.27 (화)
+			// 2025.05.27 (화)
 			// Getter와 Setter를 사용하여
 			// 키보드로 계좌 정보를 입력받아서 계좌를 관리하는 프로그램을 작성해본다.
-			// 계좌관리 프로그램을 만들어보자.
+			// 계좌관리 프로그램을 만들어보자. (하나은행까지만들어봄)
+			
+			// 2025.05.28(수) 
+			// 상속 AccountDTO, BankService 부모클래스로 사용해보기.
 	// 필드
 	public static Scanner inputInt = new Scanner(System.in) ;
 	public static Scanner inputStr = new Scanner(System.in) ;
