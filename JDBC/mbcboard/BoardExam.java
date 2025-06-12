@@ -4,13 +4,18 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import mbcboard.service.BoardService;
+import mbcmember.dto.MemberDTO;
+import mbcmember.service.MemberService;
 
 public class BoardExam {
 	// 2025.06.10
 	// java, Oracle JDBC를 활용하여 게시판을 구현해보자.
+	// 2025.06.12 
+	// memberDTO, memberDAO와 연동하여 회원용 게시판으로 구현해보자.
 	//필드
 	public static Scanner inputStr = new Scanner(System.in);
-	
+	public static MemberDTO loginSession = null;
+	//public static MemberDTO session = new MemberDTO();
 	//생성자 -> static블럭
 	
 	
@@ -35,14 +40,17 @@ public class BoardExam {
 			switch(select) {
 			case "1" :
 				System.out.println("회원용 서비스로 진입합니다.");
-			break;
+				MemberService memberService = new MemberService();
+				MemberDTO session = new MemberDTO();
+				loginSession = memberService.subMenu(loginSession,inputStr); // MemberService객체(부메뉴용)의 subMenu메서드 호출
+				break;
 			
 			case "2" :
 				System.out.println("게시판 서비스로 진입합니다.");
 				BoardService boardService = new BoardService();
 				//BoardService타입의 boardService 객체를 생성하였다.
 				
-				boardService.subMenu(inputStr); // boardService객체(부메뉴용)의 subMenu메서드 호출
+				loginSession= boardService.subMenu(loginSession, inputStr); // boardService객체(부메뉴용)의 subMenu메서드 호출
 				break;
 				
 			case "3" :
